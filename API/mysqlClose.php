@@ -1,6 +1,7 @@
 <!-- Quan -->
 <?php
-function disconnect_db($pdo) {
+function disconnect_db($pdo)
+{
     $pdo = null;
 }
 ?>
