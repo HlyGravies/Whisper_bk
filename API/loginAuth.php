@@ -13,11 +13,11 @@ if ($conn->connect_error) {
 }
 
 // Lấy dữ liệu từ yêu cầu POST
-$username = $_POST['username'];
+$userID = $_POST['username'];
 $password = $_POST['password'];
 
 // Truy vấn kiểm tra người dùng tồn tại
-$sql = "SELECT * FROM users WHERE username='$username' AND password='$password'";
+$sql = "SELECT * FROM users WHERE username='$userID' AND password='$password'";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
