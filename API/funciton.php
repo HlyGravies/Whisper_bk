@@ -1,36 +1,38 @@
 <?php
     function validateUserData($postData){
-        $errorNum;
+    $errorNums;
     if (empty($postData['userId'])) {
-        $errorNum[] = "";
+        $errorNums[] = "006";
     } elseif (strlen($postData['userId']) > 30) {
-        $errorNum[] = "";
+        $errorNums[] = "ERR_USERID_TOOLONG";
     }
 
     if (empty($postData['userName'])) {
-        $errorNum[] = "";
+        $errorNums[] = "011";
     } elseif (strlen($postData['userName']) > 20) {
-        $errorNum[] = "";
+        $errorNums[] = "ERR_USERNAME_TOOLONG";
     }
 
     if (empty($postData['password'])) {
-        $errorNum[] = "";
+        $errorNums[] = "007";
     } elseif (strlen($postData['password']) > 64) {
-        $errorNum[] = "";
+        $errorNums[] = "ERR_PASSWORD_TOOLONG";
     }
 
-    if (!empty($postData['profile'])) {
-        $errorNum[] = "";
-    }elseif(mb_strlen($postData['profile'], 'UTF-8') > 200){
-        $errorNum[] = "";
+    if(mb_strlen($postData['profile'], 'UTF-8') > 200){
+        $errorNums[] = "ERR_PROFILE_TOOLONG";
     }
 
-    if (!empty($postData['iconPath'])) {
-        $errorNum[] = "";
-    }elseif(strlen($postData['iconPath']) > 100){
+    // if(strlen($postData['iconPath']) > 100){
+    //     $errorNums[] = "ERR_ICONPATH_TOOLONG";
+    // }
 
+    if(!empty($errorNums)){
+        return $errorNums;
+    }else{
+        return null;
     }
-        return $errorNum;
+        
     }
 
     function getUserInfo($pdo, $userId) {
