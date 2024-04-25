@@ -1,6 +1,6 @@
 <?php
     function validateUserData($postData){
-        $errorNums;
+    $errorNums;
     if (empty($postData['userId'])) {
         $errorNums[] = "006";
     } elseif (strlen($postData['userId']) > 30) {
@@ -26,7 +26,13 @@
     // if(strlen($postData['iconPath']) > 100){
     //     $errorNums[] = "ERR_ICONPATH_TOOLONG";
     // }
+
+    if(!empty($errorNums)){
         return $errorNums;
+    }else{
+        return null;
+    }
+        
     }
 
     function getUserInfo($pdo, $userId) {

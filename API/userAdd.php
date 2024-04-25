@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     // Kiểm tra tất cả các biến trong $postData
     $errorNums = validateUserData($postData);
-    if (count($errorNums) === 0){
+    if ($errorNums === null){
         $sql = "INSERT INTO user (userId, userName, password, profile, iconPath) VALUES (:userId, :userName, :password, :profile, :iconPath)";
 
         try {
