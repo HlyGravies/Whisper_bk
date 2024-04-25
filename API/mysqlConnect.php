@@ -1,6 +1,6 @@
-<!-- Quan -->
-<?php
 
+<?php
+//Quan
 function connect_db() {
     $host = "localhost";
     $database = "2024shisukai";
