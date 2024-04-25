@@ -19,31 +19,34 @@ $msgList = array(
   "016" => "検索区分が不正です",
 );
 
-function setError($response, $msgCode){
+function setError($response, $errorNums){
   global $msgList;
   $response["result"] = "error";
-  $response["errCode"] = $msgCode;
-  $response["errMsg"] = $msgList[$msgCode];
+  foreach ($errorNums as $errorNum) {
+    $response["errCode"] .= $errorNum;
+    $response["errMsg"] = $msgList[$errorNum];
+  } 
+  
   return $response;
 }
 
-$response = [
-  "result" => "",
-  "errCode" => null,
-  "errMsg" => null,
-  "list" => []
-];
+// $response = [
+//   "result" => "",
+//   "errCode" => null,
+//   "errMsg" => null,
+//   "list" => []
+// ];
 
-if($_SERVER["REQUEST_METHOD"] === "POST"){
-  $postData = json_decode(file_get_contents("php://input"), true);
-}
+// if($_SERVER["REQUEST_METHOD"] === "POST"){
+//   $postData = json_decode(file_get_contents("php://input"), true);
+// }
 
-if($postData["no"] == "1"){
-  $response = setError($response, "001");
-}
+// if($postData["no"] == "1"){
+//   $response = setError($response, "001");
+// }
 
 
-if($response["result"] != "error"){ 
-}
+// if($response["result"] != "error"){ 
+// }
 
 ?>
